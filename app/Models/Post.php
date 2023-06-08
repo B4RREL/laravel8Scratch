@@ -3,8 +3,9 @@
 namespace App\Models;
 
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Catergory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Post extends Model
 {
@@ -12,6 +13,14 @@ class Post extends Model
 
    protected $guarded = ['id'];
 
+   // we are about to use Eloquent relationships
+   // Post are Eloquent Model so you will connect to Category model
+    // We have 4 relationships in Laravel
+    // hasOne, hasMany, belongsTo, belongsToMany
+    // The post will use belongsTo
+   public function catergory(){
+        return $this->belongsTo(Catergory::class);
+   }
 }
 
 

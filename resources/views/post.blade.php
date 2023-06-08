@@ -12,6 +12,9 @@
    {{-- or you can just put your code without x-slot and use $slot in layout --}}
    <article>
     <h1>{{ $post->title }}</h1>
+    <p>
+    <a href="/categories/{{$post->catergory_id}}">{{$post->catergory->name}}</a>
+    </p>
     <div>
         {{ $post->body }}
     </div>
