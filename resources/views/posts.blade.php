@@ -2,7 +2,8 @@
 
     @foreach ($posts as $post)
     <article>
-        <h1><a href="/posts/{{$post->id}}">{{$post->title}}</a></h1>
+         {{-- turn id to slug for User Friendly and use Route Model Binding --}}
+        <h1><a href="/posts/{{$post->slug}}">{{$post->title}}</a></h1>
         <div>
             {{$post->excerpt}}
         </div>

@@ -24,10 +24,14 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/posts/{post}', function($id){
+    // Route Model Binding
+    // you have to set slug here if we don't it will find with id
+    // this code basically do this
+    // Post::where('slug', $post)->first()
+Route::get('/posts/{post:slug}', function(Post $post){
 
 
     return view('post',[
-        "post" => Post::findOrFail($id)
+        "post" => $post
     ]);
 });
