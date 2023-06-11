@@ -13,7 +13,7 @@
    <article>
     <h1>{{ $post->title }}</h1>
     <p>
-    <a href="/categories/{{$post->catergory_id}}">{{$post->catergory->name}}</a>
+    <a href="/categories/{{$post->catergory->slug}}">{{$post->catergory->name}}</a>
     </p>
     <div>
         {{ $post->body }}

@@ -21,7 +21,7 @@ Route::get('/', function () {
 
     //  dd($posts);
     return view('posts',[
-        'posts' => Post::all()
+        'posts' => Post::with('catergory')->get()
     ]);
 });
 
@@ -38,7 +38,7 @@ Route::get('/posts/{post:slug}', function(Post $post){
 });
 
 // route for catergory
-Route::get('/categories/{catergory}', function(Catergory $catergory){
+Route::get('/categories/{catergory:slug}', function(Catergory $catergory){
         return view('posts',[
             'posts' => $catergory->posts
         ]);
