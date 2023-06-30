@@ -13,6 +13,8 @@ class Post extends Model
 
    protected $guarded = ['id'];
 
+   protected $with = ['catergory', 'author'];
+
    // we are about to use Eloquent relationships
    // Post are Eloquent Model so you will connect to Category model
     // We have 4 relationships in Laravel
@@ -22,8 +24,8 @@ class Post extends Model
         return $this->belongsTo(Catergory::class);
    }
 
-   public function user(){
-    return $this->belongsTo(User::class);
+   public function author(){
+    return $this->belongsTo(User::class, "user_id");
    }
 }
 

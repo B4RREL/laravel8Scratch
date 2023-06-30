@@ -22,8 +22,10 @@ class DatabaseSeeder extends Seeder
         // Post::truncate();
 
         // $user = \App\Models\User::factory()->create();
-
-        Post::factory()->create();
+        $user = User::factory()->create();
+        Post::factory(10)->create([
+            "user_id" => $user->id,
+        ]);
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
