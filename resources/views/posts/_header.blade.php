@@ -3,32 +3,13 @@
         Latest <span class="text-blue-500">Laravel From Scratch</span> News
     </h1>
 
-    
+
 
 
 
     <div class="space-y-2 lg:space-y-0 lg:space-x-4 mt-8">
         <div class="relative lg:inline-flex items-center bg-gray-100 rounded-xl">
-            <x-dropdown>
-                {{-- Trigger --}}
-                <x-slot name="trigger">
-                    <button class="py-2 pl-3 pr-9 text-sm font-semibold lg:w-32 lg:inline-flex flex w-full">
-
-                        {{
-                            isset($currentCatergory) ? ucwords($currentCatergory->name) : 'Categories'
-                        }}
-                        <x-icon name="arrow-down" class="absolute pointer-events-none" style="right: 12px" />
-                    </button>
-                </x-slot>
-
-                {{-- Links --}}
-
-                   <x-dropdown-item href="/" :active="request()->routeIs('home')">All</x-dropdown-item>
-                    @foreach ($catergories as $catergory)
-                    <x-dropdown-item href="/categories/{{$catergory->slug}}" :active="request()->is('categories/'.$catergory->slug)">{{ ucwords($catergory->name) }}</x-dropdown-item>
-                    @endforeach
-
-            </x-dropdown>
+            <x-catergory-dropdown />
         </div>
         <!--  Category -->
         {{-- <div class="relative  flex lg:inline-flex items-center bg-gray-100 rounded-xl">
@@ -74,7 +55,11 @@
 
         <!-- Search -->
         <div class="relative flex lg:inline-flex items-center bg-gray-100 rounded-xl px-3 py-2">
-            <form method="GET" action="#">
+            <form method="GET" action="/">
+                @if (request('catergory'))
+                        <input type="hidden" name="catergory" value="{{request('catergory')}}" />
+
+                @endif
                 <input type="text" name="search" placeholder="Find something"
                        class="bg-transparent placeholder-black font-semibold text-sm">
             </form>

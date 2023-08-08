@@ -1,6 +1,6 @@
 <x-layout >
 
-    @include("_header")
+    @include("posts._header")
 
      {{-- @foreach ($posts as $post) --}}
      {{-- <article>
@@ -19,6 +19,8 @@
 @if ($posts->count())
 
         <x-posts-grid :posts="$posts"/>
+
+        {{ $posts->links() }}
 
 @else
         <div class="text-center">No posts yet. Please Check Back later</div>
