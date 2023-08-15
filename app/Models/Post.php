@@ -13,7 +13,7 @@ class Post extends Model
 
    protected $guarded = ['id'];
 
-   protected $with = ['catergory', 'author'];
+   protected $with = ['catergory', 'author', 'comments'];
 
    // we are about to use Eloquent relationships
    // Post are Eloquent Model so you will connect to Category model
@@ -26,6 +26,10 @@ class Post extends Model
 
    public function author(){
     return $this->belongsTo(User::class, "user_id");
+   }
+
+   public function comments(){
+    return $this->hasMany(Comment::class);
    }
 
    public function scopeFilter($query,array $filters){

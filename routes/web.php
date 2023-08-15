@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostCommentController;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Catergory;
@@ -43,6 +44,9 @@ Route::get('/posts/{post:slug}',[PostController::class,'show']);
 //         "posts" => $author->posts,
 //     ]);
 // });
+
+//comment
+Route::post('/posts/{post:slug}/comments',[PostCommentController::class,"store"])->middleware('auth');
 
 //register page
 Route::get('register', [RegisterController::class,'create'])->middleware('guest')->name("createPage");
